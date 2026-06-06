@@ -1,4 +1,4 @@
-export type AppScreen = 'setup' | 'interview' | 'recap';
+export type AppScreen = 'landing' | 'setup' | 'interview' | 'recap';
 
 export interface InterviewConfig {
   strategy: string;

@@ -6,7 +6,7 @@ const AI_INTRO =
   "Hello! I'm your AI interview coach. Please share the job description and the role you're applying for, and I'll help you prepare for the interview.";
 
 const AI_RESPONSE =
-  "Great! I've analyzed the Justworks job description. This is a collaborative, people-first culture looking for a designer who can balance autonomy with cross-functional partnership. I've built your personalized strategy on the right — select a question to kick off your mock interview.";
+  "Great! I've analyzed the job description. This looks like a collaborative, people-first culture looking for a designer who can balance autonomy with cross-functional partnership. I've built your personalized strategy on the right — select a question to kick off your mock interview.";
 
 const SKILLS = [
   'Design Systems', 'User Research', 'Cross-functional Collaboration',
@@ -56,10 +56,11 @@ function makeMsg(role: Message['role'], text: string, stream: boolean): Message 
 // ── component ─────────────────────────────────────────────────────────────────
 
 interface Props {
+  onBack: () => void;
   onStart: (config: InterviewConfig) => void;
 }
 
-export function SetupScreen({ onStart }: Props) {
+export function SetupScreen({ onBack, onStart }: Props) {
   const [messages, setMessages] = useState<Message[]>([
     makeMsg('ai', AI_INTRO, true),
   ]);
@@ -147,6 +148,15 @@ export function SetupScreen({ onStart }: Props) {
       {/* ── Left: chat ── */}
       <div className="flex flex-col flex-1 border-r border-gray-200 min-w-0 overflow-hidden">
         <div className="px-6 py-5 border-b border-gray-100 shrink-0">
+          <button
+            onClick={onBack}
+            className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors mb-3"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+            </svg>
+            Back to home
+          </button>
           <h1 className="text-lg font-bold">Job Description Input</h1>
           <p className="text-sm text-gray-500 mt-0.5">Share the job posting or role details</p>
         </div>
