@@ -94,14 +94,6 @@ export function InterviewScreen({ config, onEnd }: Props) {
 
   const isLive = status === 'live';
 
-  const aiStatusLabel: Record<typeof status, string> = {
-    idle: 'AI Interviewer · Initializing',
-    connecting: 'AI Interviewer · Connecting',
-    live: 'AI Interviewer · Connected',
-    closed: 'AI Interviewer · Disconnected',
-    error: 'AI Interviewer · Error',
-  };
-
   return (
     <div className="flex h-screen bg-gray-950 text-white overflow-hidden">
       {/* Video + controls */}
